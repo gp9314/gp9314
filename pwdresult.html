@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Protected Report Card</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 30px;
+      background-color: #f4f4f4;
+    }
+    .hidden {
+      display: none;
+    }
+    .container {
+      max-width: 700px;
+      margin: auto;
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: center;
+    }
+    th {
+      background-color: #eee;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container" id="loginBox">
+  <h2>Enter Password to View Report Card</h2>
+  <input type="password" id="password" placeholder="Enter password">
+  <button onclick="checkPassword()">Submit</button>
+  <p id="error" style="color:red;"></p>
+</div>
+
+<div class="container hidden" id="reportCard">
+  <h2>Student: Alice Johnson</h2>
+  <p>Class: 10A</p>
+  <table>
+    <tr>
+      <th>Subject</th>
+      <th>Marks</th>
+      <th>Grade</th>
+    </tr>
+    <tr>
+      <td>Math</td>
+      <td>88</td>
+      <td>A</td>
+    </tr>
+    <tr>
+      <td>Science</td>
+      <td>92</td>
+      <td>A+</td>
+    </tr>
+    <tr>
+      <td>English</td>
+      <td>85</td>
+      <td>A</td>
+    </tr>
+  </table>
+</div>
+
+<script>
+  function checkPassword() {
+    const correctPassword = "1234"; // 🔐 Change this password
+    const userPassword = document.getElementById("password").value;
+
+    if (userPassword === correctPassword) {
+      document.getElementById("loginBox").style.display = "none";
+      document.getElementById("reportCard").classList.remove("hidden");
+    } else {
+      document.getElementById("error").textContent = "Incorrect password.";
+    }
+  }
+</script>
+
+</body>
+</html>
